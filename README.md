@@ -2,7 +2,7 @@
 
 Welcome to the Quantum Simulation Benchmarking Library. Our objective is to classify targeted physical systems into a finite number of model-property pairs (benchmark instances, or the "Problems") and pit different methods (e.g., from the classical or quantum paradigms) against each other ("the Solutions") to solve these pairs.
 
-Visit the official [website](https://github.com/Quantum-Working-Groups/qsblib/) to view the current results.
+Visit the official [website](https://quantum-working-groups.github.io/qsblib/) to view the current results.
 
 ## Table of Contents
 - [Quantum Simulation Benchmarking Library (QSB-Lib)](#quantum-simulation-benchmarking-library)
