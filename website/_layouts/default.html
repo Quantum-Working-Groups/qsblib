@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+    <!-- MathJax: LaTeX equation rendering -->
+    <script>
+    window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
+    },
+    options: {
+        renderActions: {
+        findScript: [9, function (doc) {
+            for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = /;\s*mode=display/.test(node.type);
+            const math = new doc.options.MathItem(
+                node.textContent,
+                doc.inputJax[0],
+                display
+            );
+            const placeholder = document.createTextNode('');
+            node.parentNode.replaceChild(placeholder, node);
+            math.start = {node: placeholder, delim: '', n: 0};
+            math.end = {node: placeholder, delim: '', n: 0};
+            doc.math.push(math);
+            }
+            doc.findMath();
+        }, '']
+        }
+    }
+    };
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper header-wrapper">
+            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+            
+            <div class="header-controls">
+                <nav class="site-nav">
+                    <a class="nav-button" href="{{ '/' | relative_url }}">Home</a>
+                    <a class="nav-button" href="{{ '/problems/' | relative_url }}">Problems</a>
+                    <a class="nav-button" href="{{ '/solutions/' | relative_url }}">Solutions</a>
+                    <a class="nav-button" href="{{ '/submit/' | relative_url }}">Submit Problem/Solution</a>
+                </nav>
+                
+                <div class="toolbar">
+                    <form id="search-form" class="search-form" onsubmit="return false;">
+                        <input type="text" id="search-input" class="toolbar-input" placeholder="Search...">
+                    </form>
+                    <button id="theme-toggle" class="toolbar-btn" aria-label="Toggle Night Mode">☾</button>
+                    <a href="https://github.com/Quantum-Working-Groups/qsblib" target="_blank" class="toolbar-btn github-btn">GitHub ↗</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <p>&copy; {{ site.time | date: '%Y' }} Quantum Simulation Benchmark Library</p>
+        </div>
+    </footer>
+    
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

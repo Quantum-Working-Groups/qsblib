@@ -1,0 +1,88 @@
+---
+layout: default
+---
+
+<article class="problem-content">
+
+    <header class="problem-header">
+        <h1 class="problem-title">{{ page.title }}</h1>
+
+        <div class="problem-meta">
+
+            <div class="meta-group">
+                <strong class="meta-label">Model Class:</strong>
+                <div class="tag-list">
+                    {%- for facet in page.physical_model_classes -%}
+                        {%- assign selections = facet[1] -%}
+                        {%- if selections and selections.size > 0 -%}
+                            {%- for item in selections -%}
+                                <span class="tag-pill tag-model">{{ item | escape }}</span>
+                            {%- endfor -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </div>
+
+            <div class="meta-group">
+                <strong class="meta-label">Property Class:</strong>
+                <div class="tag-list">
+                    {%- for facet in page.property_classes -%}
+                        {%- assign selections = facet[1] -%}
+                        {%- if selections and selections.size > 0 -%}
+                            {%- for item in selections -%}
+                                <span class="tag-pill tag-property">{{ item | escape }}</span>
+                            {%- endfor -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="problem-body">
+        {{ content }}
+    </div>
+
+    <!-- Submission and attribution -->
+    {% if page.submitted_by or page.contributions_by or page.si_use != nil %}
+    <section class="problem-attribution"
+             aria-labelledby="problem-attribution-heading">
+
+        <h2 id="problem-attribution-heading"
+            class="attribution-title">
+            Submission &amp; Attribution
+        </h2>
+
+        {% if page.submitted_by %}
+        <p class="attribution-item">
+            <strong>Submitted by:</strong>
+            {{ page.submitted_by | escape }}
+        </p>
+        {% endif %}
+
+        {% if page.contributions_by %}
+        <p class="attribution-item">
+            <strong>Contributions by:</strong>
+            {{ page.contributions_by | escape }}
+        </p>
+        {% endif %}
+
+        {% if page.si_use != nil %}
+        <p class="attribution-item">
+            <strong>SI Use:</strong>
+            {{ page.si_use | escape }}
+        </p>
+        {% endif %}
+
+    </section>
+    {% endif %}
+
+    <div class="problem-navigation">
+        <a href="{{ '/' | relative_url }}"
+           class="back-link">
+            &larr; Back to Problem Zoo
+        </a>
+    </div>
+
+</article>
