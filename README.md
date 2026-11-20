@@ -47,7 +47,7 @@ The taxonomy of solutions defines the computational approach used to solve a mod
 
 ## Getting Started
 
-To contribute, see [CONTRIBUTING.md](/qsblib/CONTRIBUTING.md) for detailed submission guidelines.
+To contribute, see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed submission guidelines.
 
 ## Contributors and Acknowledgement
 
