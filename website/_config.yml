@@ -2,7 +2,7 @@ title: QSB-Lib
 description: Pairing model-property pairs and different paradigms and their methods.
 theme: jekyll-theme-minimal
 baseurl: "/qsblib"
-url: "https://github.com/Quantum-Working-Groups/qsblib/" # TBD
+url: "https://quantum-working-groups.github.io" # TBD
 
 markdown: kramdown
 
